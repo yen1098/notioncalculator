@@ -106,7 +106,7 @@
     if (
       !isNaN(e.key) || 
       ['+', '-', '*', '/', '.', 'Backspace', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Delete', '(', ')'].includes(e.key) ||
-      (e.ctrlKey && ['a', 'x', 'z', 'c'].includes(e.key)) // Allow Ctrl+A, Ctrl+X, Ctrl+Z, Ctrl+C
+      (e.ctrlKey && e.key === 'a') // Allow Ctrl+A to select all
     ) {
       if (e.key === 'Enter') {
         e.preventDefault(); // Prevent form submission on Enter key
