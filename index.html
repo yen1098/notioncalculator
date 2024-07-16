@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Transparent Background Calculator</title>
+<title>Simple Calculator</title>
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -18,12 +18,11 @@
     background: rgba(255, 255, 255, 0.2);
     border: 1px solid #ccc;
     border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 250px;
+    padding: 10px;
+    width: 220px;
   }
   .display {
-    width: calc(100% - 22px);
+    width: calc(100% - 20px); /* Adjusted to fit within the borders */
     padding: 10px;
     margin-bottom: 10px;
     font-size: 1.5em;
@@ -39,7 +38,7 @@
     gap: 5px;
   }
   .button {
-    padding: 15px;
+    padding: 10px;
     font-size: 1.2em;
     border: 1px solid #ccc;
     background: rgba(255, 255, 255, 0.3);
@@ -106,7 +105,7 @@
     if (
       !isNaN(e.key) || 
       ['+', '-', '*', '/', '.', 'Backspace', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Delete', '(', ')'].includes(e.key) ||
-      (e.ctrlKey && e.key === 'a') // Allow Ctrl+A to select all
+      (e.ctrlKey && ['a', 'x', 'z', 'c'].includes(e.key)) // Allow Ctrl+A, Ctrl+X, Ctrl+Z, Ctrl+C
     ) {
       if (e.key === 'Enter') {
         e.preventDefault(); // Prevent form submission on Enter key
