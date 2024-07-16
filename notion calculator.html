@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Calculator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  .calculator {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    width: 220px;
+  }
+  .display {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    border: 1px solid #ccc;
+    background: transparent;
+    text-align: right;
+    color: #000;
+    outline: none;
+  }
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+  }
+  .button {
+    padding: 10px;
+    font-size: 1.2em;
+    border: 1px solid #ccc;
+    background: rgba(255, 255, 255, 0.3);
+    color: #000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .button:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+  .button-wide {
+    grid-column: span 2;
+  }
+</style>
+</head>
+<body>
+
+<div class="calculator">
+  <input type="text" class="display" id="display">
+  <div class="buttons">
+    <button class="button" onclick="appendToDisplay('7')">7</button>
+    <button class="button" onclick="appendToDisplay('8')">8</button>
+    <button class="button" onclick="appendToDisplay('9')">9</button>
+    <button class="button" onclick="appendToDisplay('/')">/</button>
+    <button class="button" onclick="appendToDisplay('4')">4</button>
+    <button class="button" onclick="appendToDisplay('5')">5</button>
+    <button class="button" onclick="appendToDisplay('6')">6</button>
+    <button class="button" onclick="appendToDisplay('*')">*</button>
+    <button class="button" onclick="appendToDisplay('1')">1</button>
+    <button class="button" onclick="appendToDisplay('2')">2</button>
+    <button class="button" onclick="appendToDisplay('3')">3</button>
+    <button class="button" onclick="appendToDisplay('-')">-</button>
+    <button class="button" onclick="appendToDisplay('0')">0</button>
+    <button class="button" onclick="appendToDisplay('.')">.</button>
+    <button class="button" onclick="calculateResult()">=</button>
+    <button class="button" onclick="appendToDisplay('+')">+</button>
+    <button class="button" onclick="appendToDisplay('(')">(</button>
+    <button class="button" onclick="appendToDisplay(')')">)</button>
+    <button class="button button-wide" onclick="clearDisplay()">AC</button>
+  </div>
+</div>
+
+<script>
+  function appendToDisplay(value) {
+    document.getElementById('display').value += value;
+  }
+
+  function calculateResult() {
+    let display = document.getElementById('display');
+    try {
+      display.value = eval(display.value);
+    } catch (e) {
+      display.value = 'Error';
+    }
+  }
+
+  function clearDisplay() {
+    document.getElementById('display').value = '';
+  }
+
+  // Enable keyboard input
+  document.getElementById('display').addEventListener('keydown', function(e) {
+    if (
+      !isNaN(e.key) || 
+      ['+', '-', '*', '/', '.', 'Backspace', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Delete', '(', ')'].includes(e.key) ||
+      (e.ctrlKey && ['a', 'x', 'z', 'c'].includes(e.key)) // Allow Ctrl+A, Ctrl+X, Ctrl+Z, Ctrl+C
+    ) {
+      if (e.key === 'Enter') {
+        e.preventDefault(); // Prevent form submission on Enter key
+        calculateResult();
+      }
+    } else {
+      e.preventDefault();
+    }
+  });
+</script>
+
+</body>
+</html>
