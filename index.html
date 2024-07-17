@@ -50,7 +50,7 @@
   .button:hover {
     background: rgba(255, 255, 255, 0.5);
   }
-  .button-wide {
+  .button-equal {
     grid-column: span 2;
   }
 </style>
@@ -73,12 +73,12 @@
     <button class="button" onclick="appendToDisplay('3')">3</button>
     <button class="button" onclick="appendToDisplay('-')">-</button>
     <button class="button" onclick="appendToDisplay('0')">0</button>
-    <button class="button" onclick="appendToDisplay('.')">.</button>
-    <button class="button" onclick="calculateResult()">=</button>
-    <button class="button" onclick="appendToDisplay('+')">+</button>
     <button class="button" onclick="appendToDisplay('(')">(</button>
     <button class="button" onclick="appendToDisplay(')')">)</button>
-    <button class="button button-wide" onclick="clearDisplay()">AC</button>
+    <button class="button" onclick="appendToDisplay('+')">+</button>
+    <button class="button" onclick="clearDisplay()">AC</button>
+    <button class="button" onclick="appendToDisplay('.')">.</button>
+    <button class="button button-equal" onclick="calculateResult()">=</button>
   </div>
 </div>
 
